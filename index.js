@@ -17,9 +17,7 @@ function myFunction() {
 
 //🚀🚀🚀 ⬇️ 📝 Explanation ⬇️ 📝 🚀🚀🚀: 
 
-
-
-
+console.log("Task 1: nestedfunction() can access INTERNAL variable because it is the coolest function ever.  Also because the variable resides within the functions lexical environment.")
 
 /* 🚀🚀🚀 Task 2: Counter 🚀🚀🚀 */
 /* Use summation to do the following:
@@ -30,10 +28,14 @@ function myFunction() {
 💡 NOTE: you may use a for loop for this function if you wish 
 */
 
-function summation(/*Your Code Here*/) {
-  /*Your Code Here*/
-
+function summation(number) {
+let counter = 0;
+for (let x = 0; x <= number; x++) {
+  counter = counter + x;
   }
+  return counter
+}
+console.log('Task 2: Summation of 4 = ', summation(4));
  
 
 // 🦁🦁🦁 Topic 2: ADVANCED Array Methods 🦁🦁🦁
@@ -60,10 +62,15 @@ const zooAnimals = [
   💡 NOTE: the array returned should be an array of strings, and each string should follow this pattern: "name: {name}, scientific: {scientific name}"
   */
 
-  function animalNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function animalNames(zAns){
+    const displayNames = []; 
+    
+    zAns.forEach((item) => { 
+         displayNames.push(`name: ${item.animal_name}, scientific: ${item.scientific_name}`);
+    });
+  return displayNames;
   }
-  
+  console.log("Task 3: ", animalNames(zooAnimals), '\nEND Task 3');
 
   /* 🦁🦁🦁 Request 2: .map() 🦁🦁🦁
   The zoo needs a list of all their animal's names converted to lower case. 
@@ -75,11 +82,15 @@ const zooAnimals = [
   💡 NOTE: Do some research for other methods that can help help you
   */
 
-  function lowerCaseNames(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowerCaseNames(zooAnimals){
+    const newArray = [];
+    zooAnimals.map(item => {
+      newArray.push(item.animal_name.toLowerCase());
+    });
+    return newArray;
   }
   
-  
+
   /* 🦁🦁🦁 Request 3: .filter() 🦁🦁🦁
   The zoo is concerned about animals with a lower population count. 
   Use lowPopulationAnimals to do the following: 
@@ -88,10 +99,10 @@ const zooAnimals = [
   3. Return this new array
   */
 
-  function lowPopulationAnimals(/*Your Code Here*/){
-    /*Your Code Here*/
+  function lowPopulationAnimals(zooAnimals){
+    return zooAnimals.filter(item => item.population < 5);
   }
-  
+  console.log('Task 4: ', lowPopulationAnimals(zooAnimals));
 
   /* 🦁🦁🦁 Request 4: .reduce() 🦁🦁🦁
   The zoo needs to know their total animal population across the United States. 
@@ -101,10 +112,10 @@ const zooAnimals = [
   3. Return the total population
   💡 NOTE: Remember the reduce method takes two arguments: a callback (which itself takes two args - the accumulator and the item), and an initial value for the count. Check MDN/W3Schools for syntax!
   */
-
-  function USApop(/*Your Code Here*/){
-    /*Your Code Here*/
+  function USApop(zooAnimals){
+     return zooAnimals.reduce((y, item) => item.population + y, 0);  
   }
+console.log(USApop(zooAnimals));
   
   
   // 🦁🦁🦁 Callbacks 🦁🦁🦁  
@@ -163,7 +174,6 @@ function greeting(/*Your Code Here */){
 
 
 // 🐴🐴🐴 Topic 3: Prototypes 🐴🐴🐴 //
-
 //🐴🐴🐴 Task: You are to build a cuboid maker that can return values for a cuboid's volume or surface area. Cuboids are similar to cubes but do not have even sides. Follow the steps in order to accomplish this challenge. 🐴🐴🐴
 
 /* 🐴🐴🐴 Step 1: Base Constructor 🐴🐴🐴
